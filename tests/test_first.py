@@ -13,7 +13,7 @@ def test_first(driver):
     contacts.switch_to_new_window()
 
     tensor_home = TensorHomePage(driver)
-    assert "https://tensor.ru/" == tensor_home.get_url()
+    assert tensor_home.is_needed_url()
     assert tensor_home.has_power_in_people_block()
     tensor_home.click_details()
 
