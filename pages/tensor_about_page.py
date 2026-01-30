@@ -10,7 +10,6 @@ class TensorAboutPage(BasePage):
     
     def get_images_size(self):
         images = self.find_elements(self.IMAGES)
-        print(len(images))
         return [img.size for img in images if img.is_displayed()]
     
     def is_all_images_same_size(self):
