@@ -1,8 +1,8 @@
 from .base_page import BasePage
 
 class SabyHomePage(BasePage):
-    CONTACTS_MENU = ("xpath", "//span[text()='Контакты']")
-    CONTACTS_SUB_LINK = ("xpath", "//a[contains(@class, 'sbisru-link sbis_ru-link')]")
+    CONTACTS_MENU = ("xpath", "//span[contains(text(),'Контакты')]")
+    CONTACTS_SUB_LINK = ("xpath", "//a[contains(@class,'sbisru-link')]")
 
     def go_to_contacts(self):
         self.open("https://saby.ru/")
