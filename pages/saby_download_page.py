@@ -6,8 +6,11 @@ from config import DOWNLOAD_DIR
 
 class SabyDownloadPage(BasePage):
     PLUGIN_TAB = ("xpath", "//div[contains(@data-id,'plugin')]")
-    DOWNLOAD_BUTTON = ("xpath", "//span[contains(@name, 'DownloadNewButton')]//span[contains(text(), 'Скачать')]")
+    DOWNLOAD_BUTTON = ("xpath", "//a[contains(@title, 'Скачать')]")
     FILE_NAME = "saby-setup.exe"
+
+    def click_on_correct_tab(self):
+        self.click(self.PLUGIN_TAB)
 
     def download_plugin(self):
         self.click(self.DOWNLOAD_BUTTON)
@@ -20,7 +23,7 @@ class SabyDownloadPage(BasePage):
     def wait_file(self, timeout = 60):
         path = os.path.join(DOWNLOAD_DIR, self.FILE_NAME)
 
-        for _ in range(30):
+        for _ in range(timeout):
             if os.path.exists(path) and not os.path.exists(path + ".crdownload"):
                 return path
             time.sleep(1)
