@@ -4,7 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 class SabyContactsPage(BasePage):
     TENSOR_BANNER = ("xpath", "//a[contains(@class,'sbisru-Contacts__logo-tensor')]")
     REGION = ("xpath", "//div[contains(@class, 's-Grid-col')]//span[contains(@class, 'sbis_ru-Region-Chooser__text')]")
-    #PARTNERS_LIST = ("xpath", "//div[contains(@name, 'itemsContainer')]")
     PARTNERS = ("xpath", "//div[contains(@class, 'sbisru-Contacts-List__col-1')]")
     PARTNERS_NAME = ("xpath", "//div[contains(@class, 'sbisru-Contacts-List__col-1')]//div")
     REGION_ITEM = ("xpath", "//span[contains(text(), '41 Камчатский край')]")
