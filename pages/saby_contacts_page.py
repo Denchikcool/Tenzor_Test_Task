@@ -28,13 +28,14 @@ class SabyContactsPage(BasePage):
         self.click(self.REGION)
         self.wait.until(EC.visibility_of_element_located(self.REGION_ITEM))
         self.click(self.REGION_ITEM)
+        self.wait.until(EC.text_to_be_present_in_element(self.REGION, self.REGION_NAME))
+        self.wait.until(EC.url_contains(self.URL_PART))
     
     def is_region_is_kamchatka(self):
-        return "Камчатский край" in self.get_region()
+        return self.REGION_NAME in self.get_region()
 
     def is_url_contains_region(self):
-        return "41-kamchatskij-kraj" in self.get_url().lower()
+        return self.URL_PART in self.get_url().lower()
 
     def is_title_contains_region(self):
-        #return self.wait.until(EC.title_contains("Камчатский край")) in self.get_title()
-        return "Камчатский край" in self.get_title()
+        return self.REGION_NAME in self.get_title()
