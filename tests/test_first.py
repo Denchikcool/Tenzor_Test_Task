@@ -13,10 +13,10 @@ def test_first(driver):
     contacts.switch_to_new_window()
 
     tensor_home = TensorHomePage(driver)
-    assert tensor_home.is_needed_url() #проверка url на всякий случай, чтоб wait не грузить (и на скриншоте подчеркнут url, возможно, для проверки)
-    assert tensor_home.has_power_in_people_block()
+    assert tensor_home.is_needed_url(), "Фактический URL отличается от необходимого" #проверка url на всякий случай, чтоб wait не грузить (и на скриншоте подчеркнут url, возможно, для проверки)
+    assert tensor_home.has_power_in_people_block(), "Блок \"Сила в людях\" отсутствует на странице"
     tensor_home.click_details()
 
     about = TensorAboutPage(driver)
-    assert about.is_needed_url()
-    assert about.is_all_images_same_size()
+    assert about.is_needed_url(), "Фактический URL отличается от необходимого"
+    assert about.is_all_images_same_size(), "Не все картинки имеют одинаковый размер"
