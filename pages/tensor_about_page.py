@@ -2,7 +2,6 @@ from .base_page import BasePage
 
 class TensorAboutPage(BasePage):
     URL = "https://tensor.ru/about"
-    #WORK_SECTION = ("xpath", "//div[contains(@class,'tensor_ru-About__block3')]")
     IMAGES = ("xpath", "//div[@class='tensor_ru-About__block3-image-wrapper']/img")
 
     def is_needed_url(self):
