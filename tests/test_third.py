@@ -28,7 +28,7 @@ def test_third(driver):
     expected_size = download_page.get_expected_file_size()
     download_page.download_plugin()
     file_path = download_page.wait_file()
-    assert os.path.exists(file_path)
+    assert os.path.exists(file_path), "Файл не скачался"
     actual_size = download_page.get_real_file_size(file_path)
 
-    assert expected_size == actual_size
+    assert expected_size == actual_size, "Размеры файлов отличаются"
