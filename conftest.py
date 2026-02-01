@@ -7,7 +7,9 @@ from config import DOWNLOAD_DIR
 def driver():
     options = Options()
     prefs = {
-        "download.default_directory": DOWNLOAD_DIR
+        "download.default_directory": DOWNLOAD_DIR,
+        "download.prompt_for_download": False,
+        "safebrowsing.enabled": True
     }
     options.add_experimental_option("prefs", prefs)
     #options.add_argument("--headless")
