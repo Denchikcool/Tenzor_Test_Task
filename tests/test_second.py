@@ -15,7 +15,7 @@ def get_my_region():
     data = response.json()
     return data.get("region_name")
 
-def normalize_region(region: str):
+def normalize_region(region):
     return region.lower().replace("область", "").replace("обл.", "").strip()
 
 def test_second(driver):
@@ -26,14 +26,15 @@ def test_second(driver):
     contacts = SabyContactsPage(driver)
     initial_region = contacts.get_region()
     expected_region = get_my_region()
-    assert normalize_region(expected_region) in normalize_region(initial_region)
-    assert contacts.has_partners()
+    #assert initial_region
+    assert normalize_region(expected_region) in normalize_region(initial_region), "Регион неправильно определился"
+    assert contacts.has_partners(), "Нет блока с партнерами"
     initial_partners = contacts.get_partners_name()
 
     contacts.change_region()
 
-    assert contacts.is_region_is_kamchatka()
+    assert contacts.is_region_is_kamchatka(), "Регион не поменялся на Камчатский край"
     new_partners = contacts.get_partners_name()
-    assert new_partners != initial_partners
-    assert contacts.is_title_contains_region()
-    assert contacts.is_url_contains_region()
+    assert new_partners != initial_partners, "Партнеры остались прежними"
+    assert contacts.is_title_contains_region(), "В заголовке страницы регион не Камчатский край"
+    assert contacts.is_url_contains_region(), "В URL нет Камчатского края"
